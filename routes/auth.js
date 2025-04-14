@@ -56,22 +56,16 @@ router.post('/login', loginLimiter, async (req, res) => {
     // First-factor authentication successful
     req.session.username = username;
 
-    /*
-    
-    // By generating and sending the 2FA code during the first-factor authentication,
-    // we ensure that the attacker cannot generate the 2FA code without the password,
-    // thereby mitigating the 2FA vulnerability.
-    
-    // Generate and store 2FA code
-    const mfaCode = generateMfaCode();
-    await User.storeMfaCode(user.id, mfaCode);
-
-    // Send the code via email
-    await sendEmail(user.email, mfaCode); 
-    */
+    // Set secure cookie for verification
+    res.cookie('verify', username, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 60 * 60 * 1000 // 1 hour expiry
+    });
 
     // Redirect to second-factor authentication page
-    res.redirect(`/login2?verify=${username}`);
+    res.redirect('/login2');
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).send('Error during login');
@@ -81,7 +75,7 @@ router.post('/login', loginLimiter, async (req, res) => {
 // Second-factor authentication page
 router.get('/login2', async (req, res) => {
   try {
-    const verifyUser = req.query.verify;
+    const verifyUser = req.cookies.verify;
 
     if (!verifyUser) {
       return res.status(400).send('Invalid verification request');
@@ -114,7 +108,8 @@ router.get('/login2', async (req, res) => {
 // Verify second-factor authentication
 router.post('/login2', async (req, res) => {
   try {
-    const { 'mfa-code': mfaCode, verify: verifyUser } = req.body;
+    const { 'mfa-code': mfaCode } = req.body;
+    verifyUser = req.cookies.verify;
     if (!verifyUser) {
       return res.status(400).send('Invalid verification request');
     }
