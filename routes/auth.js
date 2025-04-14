@@ -61,7 +61,7 @@ router.post('/login', loginLimiter, async (req, res) => {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'strict',
-      maxAge: 60 * 60 * 1000 // 1 hour expiry
+      maxAge: 60 * 60 * 1000, // 1 hour expiry
     });
 
     // Redirect to second-factor authentication page
