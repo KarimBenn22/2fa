@@ -8,10 +8,10 @@
   </head>
   <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-12">
-      <div class="bg-white shadow-sm border border-gray-100 rounded-xl p-8 max-w-md mx-auto">
-        <h1 class="text-2xl font-bold mb-2 text-center text-gray-900">Register</h1>
-        <p class="text-center text-gray-500 mb-8">Create your account</p>
-
+      <div class="rounded-xl p-8 max-w-md mx-auto">
+        <div class="w-full flex items-center justify-center">
+          <img src="/logo.png" alt="Lab logo" width="100" height="140">
+        </div>
         <form action="/register" method="post">
           <div class="mb-5">
             <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
@@ -20,7 +20,7 @@
               id="username"
               name="username"
               required
-              class="block w-full rounded-md border border-gray-200 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm"
+              class="w-full text-sm"
               placeholder="Choose a username"
             />
           </div>
@@ -32,7 +32,7 @@
               id="password"
               name="password"
               required
-              class="block w-full rounded-md border border-gray-200 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm"
+              class="w-full text-sm"
               placeholder="Create a password"
             />
           </div>
@@ -44,7 +44,7 @@
               id="email"
               name="email"
               required
-              class="block w-full rounded-md border border-gray-200 px-4 py-3 text-gray-900 shadow-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none text-sm"
+              class="w-full text-sm"
               placeholder="Enter your email"
             />
           </div>
@@ -52,9 +52,9 @@
           <div class="mb-6">
             <button
               type="submit"
-              class="w-full py-3 px-4 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 text-sm"
+              class="w-full text-sm"
             >
-              Create Account
+              Sign up
             </button>
           </div>
           

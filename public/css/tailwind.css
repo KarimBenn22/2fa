@@ -1,8 +1,197 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap');
+
+:root {
+  /* Colors */
+  --color-primary: rgb(55, 128, 246);
+  --color-primary-hover: hsla(217, 91%, 69%, 1);
+  --color-primary-active: rgb(35, 98, 216);
+  --color-text: rgb(19, 19, 22);
+  --color-white: rgb(255, 255, 255);
+  --color-secondary-hover: rgb(246, 248, 250);
+  --color-secondary-active: rgb(235, 238, 241);
+
+  /* Shadows */
+  --shadow-input: rgba(0, 0, 0, 0.11) 0px 0px 0px 1px, rgba(0, 0, 0, 0.07) 0px 0px 1px 0px;
+  --shadow-input-hover: rgba(0, 0, 0, 0.28) 0px 0px 0px 1px, rgba(0, 0, 0, 0.11) 0px 0px 1px 0px;
+  --shadow-input-focus: rgba(0, 0, 0, 0.28) 0px 0px 0px 1px, rgba(0, 0, 0, 0.11) 0px 0px 1px 0px, rgba(0, 0, 0, 0.11) 0px 0px 0px 4px;
+  --shadow-button: var(--color-primary) 0px 0px 0px 1px, rgba(255, 255, 255, 0.07) 0px 1px 1px 0px inset, rgba(34, 42, 53, 0.2) 0px 2px 3px 0px, rgba(0, 0, 0, 0.24) 0px 1px 1px 0px;
+  --shadow-button-focus: var(--color-primary) 0px 0px 0px 1px, rgba(255, 255, 255, 0.07) 0px 1px 1px 0px inset, rgba(34, 42, 53, 0.2) 0px 2px 3px 0px, rgba(0, 0, 0, 0.24) 0px 1px 1px 0px, rgba(0, 0, 0, 0.15) 0px 0px 0px 4px;
+  --shadow-button-active: var(--color-primary-active) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.24) 0px 1px 1px 0px;
+  --shadow-secondary: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(255, 255, 255, 0.07) 0px 1px 1px 0px inset, rgba(34, 42, 53, 0.1) 0px 2px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+  --shadow-secondary-focus: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(255, 255, 255, 0.07) 0px 1px 1px 0px inset, rgba(34, 42, 53, 0.1) 0px 2px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 4px;
+  --shadow-secondary-active: rgba(0, 0, 0, 0.12) 0px 0px 0px 1px, rgba(0, 0, 0, 0.08) 0px 1px 2px 0px inset, rgba(0, 0, 0, 0.1) 0px 1px 1px 0px;
+
+  /* Transitions */
+  --transition-input: background-color 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, fill 0.2s ease, stroke 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  --transition-button: background-color 0.1s, background 0.1s, border-color 0.1s, color 0.1s, fill 0.1s, stroke 0.1s, opacity 0.1s, box-shadow 0.1s, transform 0.1s;
+}
+
 body {
-    font-family: "Geist", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'Geist', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+input {
+  accent-color: var(--color-primary);
+  appearance: auto;
+  aspect-ratio: auto;
+  background-color: var(--color-white);
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-width: 0px;
+  box-shadow: var(--shadow-input);
+  box-sizing: border-box;
+  color: var(--color-text);
+  cursor: text;
+  display: block;
+  height: 40px;
+  max-height: 36px;
+  opacity: 1;
+  outline-color: rgba(0, 0, 0, 0);
+  outline-offset: 2px;
+  outline-style: solid;
+  outline-width: 2px;
+  overflow: clip;
+  padding: 6px 12px;
+  tab-size: 4;
+  text-align: start;
+  transition: var(--transition-input);
+  width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:hover {
+  border-color: rgba(0, 0, 0, 0.28);
+  box-shadow: var(--shadow-input-hover);
+  -webkit-tap-highlight-color: transparent;
+}
+
+input:focus {
+  border-color: rgba(0, 0, 0, 0.28);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: var(--shadow-input-focus);
+  outline: none;
+}
+
+button {
+  align-items: center;
+  appearance: button;
+  background-color: var(--color-primary);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--shadow-button);
+  box-sizing: border-box;
+  color: var(--color-white);
+  cursor: pointer;
+  display: flex;
+  font-weight: 500;
+  height: 35px;
+  justify-content: center;
+  opacity: 1;
+  outline: none;
+  padding: 6px 12px;
+  position: relative;
+  text-align: center;
+  transition: var(--transition-button);
+  user-select: none;
+  width: 320px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+button:hover {
+  background-color: var(--color-primary-hover);
+}
+
+button:focus {
+  box-shadow: var(--shadow-button-focus);
+  outline: none;
+}
+
+button:active {
+  background-color: var(--color-primary-active);
+  box-shadow: var(--shadow-button-active);
+  transform: translateY(1px);
+}
+
+.link__button-primary {
+  align-items: center;
+  appearance: button;
+  background-color: var(--color-primary);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--shadow-button);
+  box-sizing: border-box;
+  color: var(--color-white);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 500;
+  justify-content: center;
+  opacity: 1;
+  outline: none;
+  padding: 6px 12px;
+  position: relative;
+  text-align: center;
+  transition: var(--transition-button);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.link__button-primary:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.link__button-primary:focus {
+  box-shadow: var(--shadow-button-focus);
+  outline: none;
+}
+
+.link__button-primary:active {
+  background-color: var(--color-primary-active);
+  box-shadow: var(--shadow-button-active);
+  transform: translateY(1px);
+}
+
+.link__button-secondary {
+  align-items: center;
+  appearance: button;
+  background-color: var(--color-white);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: var(--shadow-secondary);
+  box-sizing: border-box;
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 500;
+  justify-content: center;
+  opacity: 1;
+  outline: none;
+  padding: 6px 12px;
+  position: relative;
+  text-align: center;
+  transition: var(--transition-button);
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.link__button-secondary:hover {
+  background-color: var(--color-secondary-hover);
+}
+
+.link__button-secondary:focus {
+  box-shadow: var(--shadow-secondary-focus);
+  outline: none;
+}
+
+.link__button-secondary:active {
+  background-color: var(--color-secondary-active);
+  box-shadow: var(--shadow-secondary-active);
+  transform: translateY(1px);
 }

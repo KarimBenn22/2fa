@@ -7,10 +7,13 @@
     <link href="/css/tailwind.css" rel="stylesheet"> 
     <script src="/js/main.js" defer></script>
   </head>
-  <body class="bg-gray-50 text-gray-900 min-h-screen flex items-center justify-center">
+  <body class="text-gray-900 min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-12">
-      <div class="bg-white shadow-sm border border-gray-100 rounded-xl p-8 max-w-md mx-auto">
-        <h1 class="text-2xl font-bold mb-2 text-center text-gray-900">My Account</h1>
+      <div class="rounded-xl p-8 max-w-md mx-auto">
+        <div class="w-full flex items-center justify-center">
+          <img src="/logo.png" alt="Lab logo" width="100" height="140">
+        </div>
+        <h1 class="text-2xl font-semibold mb-2 text-center text-gray-900">My Account</h1>
         <div class="mb-6">
           <p class="text-lg text-center text-gray-600">
             Welcome, <span id="username" class="font-bold text-blue-600"></span>!
@@ -29,7 +32,7 @@
         <div class="flex justify-center">
           <a
             href="/logout"
-            class="py-3 px-6 bg-gray-100 text-gray-700 font-medium rounded-md border border-gray-200 hover:bg-gray-200 transition duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
+            class="link__button-secondary text-sm"
           >
             Logout
           </a>
@@ -45,10 +48,11 @@
             method: 'POST',
           });
           const data = await response.json();
+          console.log(data);
           const { username, email, name } = data.username;
           document.getElementById('username').textContent = username || 'User';
           document.getElementById('email').textContent = email || 'user@example.com';
-          document.getElementById('name').textContent = name || 'User';
+          document.getElementById('name').textContent = username || 'User';
 
           if (username.toLowerCase() === 'sam') {
             const successElement = document.createElement('div');
