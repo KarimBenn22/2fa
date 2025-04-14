@@ -4,7 +4,7 @@ const path = require('path');
 const ejs = require('ejs');
 
 const isAuthenticated = (req, res, next) => {
-  //console.log('------checking if user is authenticated------');
+  //console.log(checking if user is authenticated);
   //console.log('req.session.user: ', req.session.user);
   if (!req.session.user || !req.session.authenticated) {
     return res.redirect('/login');
