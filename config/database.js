@@ -40,7 +40,7 @@ const initializeDatabase = () => {
     `);
 
     // Insert target user if they don't exist
-    db.get(`SELECT id FROM users WHERE username = 'wiener'`, (err, row) => {
+    db.get(`SELECT id FROM users WHERE username = 'ahmed'`, (err, row) => {
       if (err) {
         console.error('Error checking for test user:', err.message);
       } else if (!row) {
